@@ -83,7 +83,7 @@ module LoginService
       Mu::update(query, sudo: true)
     end
 
-    def update_modified(session, modified = DateTime.now)
+    def update_session_modified(session, modified = DateTime.now)
       query = " DELETE {"
       query += "   GRAPH <#{SESSIONS_GRAPH}> {"
       query += "     <#{session}> <#{RDF::Vocab::DC.modified}> ?modified ."
