@@ -140,6 +140,6 @@ Breaking changes:
 
   You may need to change `data.authenticated.relationships.account.data.id` in the frontend to `data.authenticated.data.relationships.account.data.id` in order to consume the response data. 
 
-#### This release
+#### v3.1.0
 - Upgrade to `semtech/mu-ruby-template:3.2.1` (Ruby 3.4)
 - Use built-in sudo query support via `ALLOW_MU_AUTH_SUDO` instead of hand-rolled `Mu::AuthSudo`
