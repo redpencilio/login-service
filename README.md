@@ -139,3 +139,7 @@ Breaking changes:
 - Make responses JSON-API compliant by moving `relationships` into `data` object. It has become a child rather than a sibling. 
 
   You may need to change `data.authenticated.relationships.account.data.id` in the frontend to `data.authenticated.data.relationships.account.data.id` in order to consume the response data. 
+
+#### This release
+- Upgrade to `semtech/mu-ruby-template:3.2.1` (Ruby 3.4)
+- Use built-in sudo query support via `ALLOW_MU_AUTH_SUDO` instead of hand-rolled `Mu::AuthSudo`
