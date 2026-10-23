@@ -15,7 +15,7 @@ module LoginService
       query += "        <#{MU_CORE.uuid}> ?uuid"
       query += "   }"
       query += " }"
-      Mu::query(query, sudo: true)
+      Mu::query(query)
     end
 
     def remove_old_sessions(session)
@@ -31,7 +31,7 @@ module LoginService
       query += "                <#{MU_CORE.uuid}> ?id . "
       query += "   }"
       query += " }"
-      Mu::update(query, sudo: true)
+      Mu::update(query)
     end
 
     def insert_new_session_for_account(account, session_uri, session_id)
@@ -41,7 +41,7 @@ module LoginService
       query += "                      <#{MU_CORE.uuid}> #{session_id.sparql_escape} ."
       query += "   }"
       query += " }"
-      Mu::update(query, sudo: true)
+      Mu::update(query)
     end
 
     def select_account_by_session(session)
@@ -54,7 +54,7 @@ module LoginService
       query += "              a <#{RDF::Vocab::FOAF.OnlineAccount}> ."
       query += "   }"
       query += " }"
-      Mu::query(query, sudo: true)
+      Mu::query(query)
     end
 
     def select_current_session(account)
@@ -64,7 +64,7 @@ module LoginService
       query += "          <#{MU_CORE.uuid}> ?id . "
       query += "   }"
       query += " }"
-      Mu::query(query, sudo: true)
+      Mu::query(query)
     end
 
     def delete_current_session(account)
@@ -80,7 +80,7 @@ module LoginService
       query += "              <#{MU_CORE.uuid}> ?id . "
       query += "   }"
       query += " }"
-      Mu::update(query, sudo: true)
+      Mu::update(query)
     end
 
     def update_session_modified(session, modified = DateTime.now)
@@ -94,14 +94,14 @@ module LoginService
       query += "     <#{session}> <#{RDF::Vocab::DC.modified}> ?modified ."
       query += "   }"
       query += " }"
-      Mu::update(query, sudo: true)
+      Mu::update(query)
 
       query =  " INSERT DATA {"
       query += "   GRAPH <#{SESSIONS_GRAPH}> {"
       query += "     <#{session}> <#{RDF::Vocab::DC.modified}> #{modified.sparql_escape} ."
       query += "   }"
       query += " }"
-      Mu::update(query, sudo: true)
+      Mu::update(query)
     end
 
   end
